@@ -11,7 +11,7 @@ jobs:
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true --innodb-file-format=Barracuda
         environment:
           MYSQL_USER: root
-          MYSQL_PASSWORD: admin
+          MYSQL_ROOT_PASSWORD: admin
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
