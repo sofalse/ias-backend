@@ -6,5 +6,9 @@
   "password": "admin",
   "database": "ias",
   "entities": ["src/**/**.entity{.ts,.js}"],
-  "synchronize": true
+  "migrations": ["src/migrations/**/*.ts"],
+  "synchronize": true,
+  "cli": {
+    "migrationsDir": "src/migrations"
+  }
 }
