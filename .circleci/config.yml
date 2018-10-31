@@ -33,6 +33,17 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - run:
+          name: install db client
+          command: sudo apt update && sudo apt install -y mysql-client
+      - run:
+          name: Wait for db
+          command: |
+            dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run:
+          name: Create DB
+          command: mysql -h 127.0.0.1 -u root -padmin -e "create database ias"
+
       # run tests!
       - run: yarn test
 
