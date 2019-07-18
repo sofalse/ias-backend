@@ -17,18 +17,25 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:e2e": "jest --config ./test/jest-e2e.json",
+    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "webpack": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "@nestjs/common": "^5.1.0",
     "@nestjs/core": "^5.1.0",
     "@nestjs/typeorm": "^5.2.2",
+    "axios": "^0.19.0",
     "bcrypt": "^3.0.2",
+    "chai": "^4.2.0",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.9.1",
     "mysql": "^2.16.0",
+    "pg": "^7.11.0",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.2.2",
-    "typeorm": "^0.2.8",
-    "typescript": "^3.0.1"
+    "typeorm": "^0.2.18",
+    "typescript": "^3.0.1",
+    "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "@nestjs/testing": "^5.1.0",

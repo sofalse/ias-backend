@@ -9,7 +9,7 @@ import {
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id?: number;
 
   @Column({
     length: 32,
@@ -27,15 +27,15 @@ export class User {
   })
   email: string;
 
-  @Column({
-    type: 'simple-json',
-    nullable: true,
-  })
-  roles?: string[];
-
   @CreateDateColumn()
   createdAt?: Date;
 
   @UpdateDateColumn()
   updatedAt?: Date;
+
+  constructor(username: string, password: string, email: string) {
+    this.username = username;
+    this.password = password;
+    this.email = email;
+  }
 }
