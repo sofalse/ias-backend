@@ -8,12 +8,6 @@ import { User } from 'user/user.entity';
 import { Order } from 'order/order.entity';
 import { Item } from 'item/item.entity';
 
-export interface currencyChangeDTO {
-  itemId: number;
-  oldCurrency: string;
-  oldPrice: number;
-}
-
 @Injectable()
 export class PaymentService {
   constructor(
@@ -61,26 +55,6 @@ export class PaymentService {
       return data;
     } catch (err) {
       throw new HttpException(err, HttpStatus.UNPROCESSABLE_ENTITY);
-    }
-  }
-
-  async currencyToPLN(currencyChangeDTO: currencyChangeDTO) {
-    const item = await this.itemRepository.findOne(currencyChangeDTO.itemId);
-
-    if (!item) {
-      throw new HttpException('Invalid item', HttpStatus.NOT_FOUND);
-    }
-
-    const nbpApi = await this.getNBP();
-
-    for (let i = 0; i < nbpApi.rates.length(); i++) {
-      if (nbpApi.rates[i].code === currencyChangeDTO.oldCurrency) {
-        const newValue = currencyChangeDTO.oldPrice / nbpApi.rates[i].mid;
-        await this.itemRepository.update(currencyChangeDTO.itemId, {
-          currency: 'PLN',
-          price: newValue.toString(),
-        });
-      }
     }
   }
 }

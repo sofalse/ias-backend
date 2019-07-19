@@ -7,9 +7,10 @@ import {
   Get,
   Query,
   HttpException,
+  Patch,
 } from '@nestjs/common';
 import { ItemDTO } from './item.dto';
-import { ItemService } from './item.service';
+import { ItemService, CurrencyChangeDTO } from './item.service';
 
 @Controller('/item')
 export class ItemController {
@@ -31,5 +32,11 @@ export class ItemController {
   @HttpCode(HttpStatus.CREATED)
   async createOne(@Body('data') data: ItemDTO) {
     return this.itemService.createOne(data);
+  }
+
+  @Patch()
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async currencyChaange(@Body('data') data: CurrencyChangeDTO) {
+    this.itemService.currencyChange(data);
   }
 }
