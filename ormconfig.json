@@ -3,11 +3,11 @@
   "host": "localhost",
   "port": 3306,
   "username": "root",
-  "password": "admin",
+  "password": "root",
   "database": "ias",
   "entities": ["src/**/**.entity{.ts,.js}"],
   "migrations": ["src/migrations/**/*.ts"],
-  "synchronize": true,
+  "synchronize": false,
   "cli": {
     "migrationsDir": "src/migrations"
   }
